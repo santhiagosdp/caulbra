@@ -14,11 +14,13 @@
 /* Route::get('/', function () {
     return view('welcome');
 }); */
-Route::get('/', 'PagesController@index');
+Route::get('/', 'PagesController@index'); //inicial welcome.blade
 
-Route::get('/amigos', 'PagesController@amigos');
+Route::get('/slc', 'PagesController@solicitacao');
 
-Route::get('/sobre', 'PagesController@sobre');
+Route::get('/vld', 'PagesController@validacao');
+
+Route::get('/ems', 'PagesController@emissao');
 
 
 

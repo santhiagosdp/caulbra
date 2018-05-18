@@ -10,33 +10,16 @@ class PagesController extends Controller
     {
         return view('welcome');
 	}
-	/**
-     * Retorna JSON com lista de amigos
-     *
-     * @return Response
-     */
-    public function amigos()
+    public function solicitacao()
     {
-                $amigos = [
-                               ['nome' => 'José Silva', 'idade' => 22],
-                               ['nome' => 'Maria José', 'idade' => 20],
-                               ['nome' => 'João Pinheiro', 'idade' => 35]
-                ];
-  
-                return $amigos;
+		return view('solicitacao');
     }
-	/**
-     * Retorna página com informações pessoais
-     *
-     * @return Response
-     */
-    public function sobre()
+	public function validacao()
     {
-                $eu = [
-                               'nome' => 'Santhiago Dionizio',
-                               'idade' => 25
-                ];
-  
-                return view('sobre', compact('eu'));
+		return view('validacao');
+    }
+    public function emissao()
+    {
+		return view('emissao');
     }
 }
