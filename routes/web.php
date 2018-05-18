@@ -16,14 +16,17 @@
 }); */
 Route::get('/', 'PagesController@index'); //inicial welcome.blade
 
-Route::get('/slc', 'PagesController@solicitacao');
+Route::post('/slc', 'PagesController@solicitacao');
 
-Route::get('/vld', 'PagesController@validacao');
+Route::post('/vld','PagesController@validacao');
+//Route::get('/vld', 'PagesController@validacao');  se usar assim, vai direto se digitar no url
 
-Route::get('/ems', 'PagesController@emissao');
-
-
-
-/* Route::post('/enviar', function(Illuminate\Http\Request $request){
+/* Route::post('/vld', function(Illuminate\Http\Request $request){  //confirmar dados digitados solicitaçao
 	var_dump($request->all());
-}); */
+});  */
+
+Route::post('/ems','PagesController@emissao');
+//Route::get('/ems', 'PagesController@emissao');se usar assim, vai direto se digitar no url
+
+
+
