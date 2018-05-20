@@ -1,5 +1,7 @@
+//window.onload=startCamera()
+
 function startCamera () {
-    navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' }, audio: true })
+    navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user' }, audio: true })
         .then((stream) => {
             document.getElementById('videoFeed').srcObject = stream
         })

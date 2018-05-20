@@ -11,19 +11,19 @@
 
         <button class="btn start-video" title='Câmera'>Abrir Câmera</button>
         <button class="btn stop-video" title='Stop'>Fechar Câmera</button>
-        <button class="btn take-picture" title='Tirar uma foto'> Clic 📷 </button>
+        <button class="btn take-picture" title='Tirar uma foto'> Foto 📷 </button>
+        <br></br>
 
         <video style="width:80%" id="videoFeed"></video>
-        <canvas id="picture-canvas"></canvas>
+        <!-- <canvas id="picture-canvas"></canvas> -->
 
 	</div>
+  <h2> Imagem capturada</h2>
 
-	<div class ="col-sm-2 text-left">
-    <h2>teste</h2>
-	</div>
-	<div class="row content" align="center">
-		<div class ="col-sm-12 text-left">
-			<div align="center">
+	<div class ="col-sm-6 text-left">
+    <canvas style="width:70%" id="picture-canvas"></canvas>
+
+    <div align="center">
 				<form action="/ems" method="POST">
 					<input type="hidden" name="_token" value="{{ csrf_token() }}">
 
@@ -31,6 +31,5 @@
 					<button class="btn btn-danger">Cancelar</button>
 				</form>
 			</div>
-		</div>
 	</div>
 @stop
