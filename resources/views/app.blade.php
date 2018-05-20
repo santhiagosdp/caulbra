@@ -21,7 +21,11 @@
 			@yield('rodape')
 		</footer>
 		<hr noshade></hr>
-		
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+      <!-- jquery -->
+      <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+      <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+      <script src="./js/FileSaver.min.js">
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     </body>
 </html>

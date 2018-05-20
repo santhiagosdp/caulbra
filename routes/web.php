@@ -21,12 +21,7 @@ Route::post('/slc', 'PagesController@solicitacao');
 Route::post('/vld','PagesController@validacao');
 //Route::get('/vld', 'PagesController@validacao');  se usar assim, vai direto se digitar no url
 
-/* Route::post('/vld', function(Illuminate\Http\Request $request){  //confirmar dados digitados solicitaçao
-	var_dump($request->all());
-});  */
-
 Route::post('/ems','PagesController@emissao');
 //Route::get('/ems', 'PagesController@emissao');se usar assim, vai direto se digitar no url
 
-
-
+Route::post('/ok','PagesController@sucess');

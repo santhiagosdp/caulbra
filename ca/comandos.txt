@@ -1,0 +1,58 @@
+variavel de ambiente openssl
+
+criando da CA ...
+openssl genrsa -des3 -out ca/caulbra.key 1024
+openssl req -extensions v3_ca -config ca/openssl.conf -new -x509 -days 3650 -key ca/caulbra.key -out ca/caulbra.cer
+openssl pkcs12 -export -out ca/caulbra.pfx -in ca/caulbra.cer -inkey ca/caulbra.key
+openssl req -config ca/openssl.conf -new -key ca/caulbra.key -out ca/caulbra.csr
+openssl ca -config ca/openssl.conf -extensions v3_ca -days 3650 -in ca/caulbra.csr -notext -out ca/caulbra.crt
+
+
+criando do titular ...
+openssl genrsa -aes256 -out titular/private/santhiago.key 2048
+openssl req -new -config ca/openssl.conf -key titular/private/santhiago.key -out titular/csr/santhiago.csr
+openssl ca -config ca/openssl.conf -extensions v3_ca -days 365 -in titular/csr/santhiago.csr -notext -out titular/certs/santhiago.crt
+openssl pkcs12 -export -out titular/certs_pfx/santhiago.pfx -inkey titular/private/santhiago.key -in titular/certs/santhiago.crt -certfile ca/caulbra.crt
+
+
+openssl req -new -config ca/openssl.conf -key titular/private/santhiago.key -out titular/csr/santhiago.csr -subj "/C=BR/ST=Tocantins/L=Palmas/O=Ceulp\/Ulbra/OU=caulbra/CN=santhiago/emailAddress==santhiagosdp@gmail.com"
+
+ 
+
+
+
+
+
+openssl genrsa -des3 -out ca/caulbra.key 1024
+openssl genrsa -aes256 -out titular/private/santhiago.key 2048
+
+openssl req -new -config ca/openssl.conf -key ca/caulbra.key -out ca/caulbra.csr
+openssl req -new -config ca/openssl.conf -key titular/private/santhiago.key -out titular/csr/santhiago.csr
+
+openssl req -extensions v3_ca -config ca/openssl.conf -new -x509 -days 3650 -key ca/caulbra.key -out ca/caulbra.cer
+openssl req -extensions v3_ca -config ca/openssl.conf -new -x509 -days 365 -key ca/caulbra.key -out titular/cer/santhiago.cer 
+
+openssl ca -config ca/openssl.conf -extensions v3_ca -days 3650 -in ca/caulbra.cer -notext -out ca/caulbra.crt
+openssl ca -config ca/openssl.conf -extensions v3_ca -days 365 -in titular/csr/santhiago.csr -notext -out titular/certs/santhiago.crt
+
+openssl pkcs12 -export -out ca/caulbra.pfx -in ca/caulbra.cer -inkey ca/caulbra.key
+openssl pkcs12 -export -out titular/certs_pfx/santhiago.pfx -in titular/certs/santhiago.crt -inkey titular/private/santhiago.key  -certfile ca/caulbra.crt
+
+
+
+
+
+
+
+
+
+openssl genrsa -des3 -out ca/caulbra.key 1024 ok
+
+openssl req -config ca/openssl.conf -new -key ca/caulbra.key -out ca/caulbra.csr ok
+
+openssl req -extensions v3_ca -config ca/openssl.conf -new -x509 -days 3650 -key ca/caulbra.key -out ca/caulbra.cer ok
+
+openssl pkcs12 -export -out ca/caulbra.pfx -in ca/caulbra.cer -inkey ca/caulbra.key - verificar
+
+openssl ca -config ca/openssl.conf -extensions v3_ca -days 3650 -in ca/caulbra.csr -notext -out ca/caulbra.crt
+
