@@ -7,22 +7,17 @@
 @section('conteudo')
 	<h1 align="center">VALIDAÇÃO</h1>
 	<hr noshade></hr>
-	<div class ="col-sm-8 text-left">
-    <div id="my_camera"></div>
-	   <!-- First, include the Webcam.js JavaScript Library -->
-	    <!-- <script type="text/javascript" src="webcam.js"></script> -->
-	     <!-- Configure a few settings and attach camera -->
-	      <script language="JavaScript">
-		      Webcam.set({
-			         width: 600,
-			         height: 460,
-			         image_format: 'jpeg',
-			         jpeg_quality: 90
-		      });
-		        Webcam.attach( '#my_camera' );
-	       </script>
+	<div class ="col-sm-6 text-left">
+
+        <button class="btn start-video" title='Câmera'>Abrir Câmera</button>
+        <button class="btn stop-video" title='Stop'>Fechar Câmera</button>
+        <button class="btn take-picture" title='Tirar uma foto'> Clic 📷 </button>
+
+        <video style="width:80%" id="videoFeed"></video>
+        <canvas id="picture-canvas"></canvas>
 
 	</div>
+
 	<div class ="col-sm-2 text-left">
     <h2>teste</h2>
 	</div>
