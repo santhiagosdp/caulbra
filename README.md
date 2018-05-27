@@ -1,3 +1,21 @@
+## Estagio Sistemas de Informação 2018/1
+Desenvolvimento de unidade certificadora para geração de certificado para pessoa fisica; 
+
+Passos
+- npm install
+- composer install
+- executar mysql
+	(criar BD caulbra)
+- php artisan migrate
+	(criar usuario para teste direto no bd)
+- variaveis de ambiente
+	* openSSL
+	* Winrar
+- php artisan sercve
+- navegador: localhost:8000/
+
+
+
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
 <p align="center">
