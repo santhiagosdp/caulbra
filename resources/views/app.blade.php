@@ -16,13 +16,30 @@
 		<nav class="navbar navbar-inverse">
 			<div class="container-fluid">
 				<div class="navbar-header">
-					<a class="navbar-brand" href="/">CA ULBRA - CAULBRA</a>
+					<a class="navbar-brand" href="/home">CA ULBRA - CAULBRA</a>
 				</div>
+        <div class="navbar-header">
+          <li class="nav-item dropdown">
+            <a id="navbarDropdown" class="navbar-brand" href="#" role="button" data-toggle="dropdown"         aria-haspopup="true" aria-expanded="false" v-pre>
+                {{ Auth::user()->name }} <span class="caret"></span>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-header" href="{{ route('logout') }}"
+                onclick="event.preventDefault();
+                document.getElementById('logout-form').submit();">
+                {{ __('Logout') }}
+              </a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+              @csrf
+            </form>
+            </div>
+          </li>
+        </div>
 			</div>
 		</nav>
-        <div class="container">
-                @yield('conteudo')
-        </div>
+    <div class="container">
+      @yield('conteudo')
+    </div>
 		<hr noshade></hr>
 		<footer class="container-fluid text-center">
 			@yield('rodape')

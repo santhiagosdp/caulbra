@@ -7,6 +7,8 @@
 @section('conteudo')
 	<h1 align="center">SOLICITAÇÃO</h1>
 	<hr noshade></hr>
+	<div class ="col-sm-2 text-left">
+	</div>
 	<div class ="col-sm-8 text-left">
 		<form action="/vld" method="POST">
 		  <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -31,11 +33,11 @@
 		</form>
 	</div>
 	<div class ="col-sm-2 text-left">
-				<br>
+				<!-- <br>
 				<button class="btn btn-primary">Consultar</button>
 				<br></br>
 				<br></br>
 				<br></br>
-				<button class="btn btn-warning">Imprimir Termo</button>
+				<button class="btn btn-warning">Imprimir Termo</button> -->
 	</div>
 @stop

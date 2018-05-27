@@ -1,0 +1,1 @@
+C:\Program Files\WinRAR>winrar a C:\xampp\htdocs\docs\Estagio\caulbra\ca\emitidos\teste C:\xampp\htdocs\docs\Estagio\caulbra\ca\titulares

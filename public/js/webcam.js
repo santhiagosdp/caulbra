@@ -1,5 +1,3 @@
-//window.onload=startCamera()
-
 function startCamera () {
     navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user' }, audio: true })
         .then((stream) => {
@@ -16,12 +14,14 @@ function stopCamera () {
         .forEach(track => track.stop())
 }
 
-document.querySelector('.start-video').addEventListener('click', event => {
-    startCamera()
-})
 document.querySelector('.stop-video').addEventListener('click', event => {
     stopCamera()
 })
+
+document.querySelector('.start-video').addEventListener('click', event => {
+    startCamera()
+})
+
 document.querySelector('.take-picture').addEventListener('click', event => {
     // coletamos os elementos que precisamos referenciar
     const canvas = document.getElementById('picture-canvas') // ESSE ITEM MOSTRA A FOTO NA TELA
