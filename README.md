@@ -5,16 +5,16 @@ Passos
 - npm install
 - composer install
 - executar mysql
-	(criar BD caulbra)
+	* criar BD caulbra
 - php artisan migrate
-	(criar usuario para teste direto no bd)
-- variaveis de ambiente
+	* criar usuario para teste direto no bd
+- Variaveis de ambiente
 	* openSSL
 	* Winrar
-- php artisan sercve
-- navegador: localhost:8000/
+- php artisan serve
+- Navegador: localhost:8000/
 
-
+@santhiagosdp
 
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
