@@ -24,7 +24,8 @@ document.querySelector('.start-video').addEventListener('click', event => {
 
 document.querySelector('.take-picture').addEventListener('click', event => {
     // coletamos os elementos que precisamos referenciar
-    const canvas = document.getElementById('picture-canvas') // ESSE ITEM MOSTRA A FOTO NA TELA
+    const canvas = document.getElementById('picture-canvas') 
+    // ESSE ITEM MOSTRA A FOTO NA TELA
 		//console.log = ("document.getElementById('picture-canvas')")
     const context = canvas.getContext('2d')
     const video = document.getElementById('videoFeed')
@@ -41,5 +42,5 @@ document.querySelector('.take-picture').addEventListener('click', event => {
         // e então, não precisamos mais da câmera
         stopCamera()
     }, 'image/jpeg', 0.95)
-    //closeCamera()
+    closeCamera()
 })
