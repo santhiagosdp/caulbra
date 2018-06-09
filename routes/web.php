@@ -28,21 +28,20 @@ Route::post('/vld', function(Illuminate\Http\Request $request){
     $cpftitular->email = $request->get('email');
  
     $cpftitular->save();
-
+    
    return view('validacao', ['cpf' => $request->get('cpf')]);
- 
     //echo "Sua mensagem foi armazenada com sucesso! Código: " . $cpftitular->id;
 });
 
 Route::post('/ems', function(Illuminate\Http\Request $request ){
+
+	// codigo para anexar documentos 
+
 	 return view('emissao', ['cpf' => $request->get('cpf')]);
 });
-//Route::post('/ems','PagesController@move');
-//Route::get('/ems', 'PagesController@emissao');se usar assim, vai direto se digitar no url
 
-Route::post('/ok','PagesController@sucess');
-
-// Route::post('/gerar','PagesController@gerar');
+//GERAR O CERTIFICADO TITULAR
+Route::post('/suc', 'PagesController@emit' );
 
 Auth::routes();
 

@@ -40,11 +40,9 @@
     <div class="container">
       @yield('conteudo')
     </div>
-		<hr noshade></hr>
 		<footer class="container-fluid text-center">
 			@yield('rodape')
 		</footer>
-		<hr noshade></hr>
       <!-- jquery -->
       <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
       <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>

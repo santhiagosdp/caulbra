@@ -5,55 +5,46 @@
 @stop
 
 @section('conteudo')
-<!-- <script type="text/javascript" src="./FileSaver.min.js"></script> -->
-  <script>
-    var teste = function(cpf,senha)
-    {
-      var cpft= cpf;
-      var senhat = senha;
-      //alert(cpft+" e senha: "+senhat);
-      var conf = confirm("Press a button!");
-
-      //GERANDO ARQUIVO.BAT e fazendo Download
-      // let texto = "cd C:/xampp/htdocs/docs/Estagio/caulbra/ca\nmkdir titular\nopenssl genrsa -des3 -passout pass:"+senhat+" -out titular/"+cpft+".key 2048\nopenssl req -extensions v3_ca -config ca/openssl.conf -new -x509 -days 365 -key ca/caulbra.key -out titular/"+cpft+".cer\nopenssl req -new -config ca/openssl.conf -key titular/"+cpft+".key -out titular/"+cpft+".csr\nopenssl ca -config ca/openssl.conf -extensions v3_ca -days 365 -in titular/"+cpft+".csr -notext -out titular/"+cpft+".crt \n\openssl pkcs12 -export -out titular/"+cpft+".pfx -inkey titular/"+cpft+".key -in titular/"+cpft+".crt -certfile ca/caulbra.crt\nwinrar a emitidos/"+cpft+".rar titular/*.*\nrmdir /s /q titular";
-      if (conf == true) {
-          let texto = "cd C:/xampp/htdocs/docs/Estagio/caulbra/ca\nmkdir titular\nopenssl genrsa -des3 -out titular/"+cpft+".key 2048\nopenssl req -extensions v3_ca -config ca/openssl.conf -new -x509 -days 365 -key ca/caulbra.key -out titular/"+cpft+".cer\nopenssl req -new -config ca/openssl.conf -key titular/"+cpft+".key -out titular/"+cpft+".csr\nopenssl ca -config ca/openssl.conf -extensions v3_ca -days 365 -in titular/"+cpft+".csr -notext -out titular/"+cpft+".crt \n\openssl pkcs12 -export -out titular/"+cpft+".pfx -inkey titular/"+cpft+".key -in titular/"+cpft+".crt -certfile ca/caulbra.crt\nwinrar a emitidos/"+cpft+".rar titular/*.*\nrmdir /s /q titular";
-
-          let titulo = cpft //"num CPF titular"; //titulo sera o CPF do titular
-          var blob = new Blob([texto], { type: "text/plain;charset=utf-16" });
-
-          saveAs(blob, titulo + ".bat");
-          // Colocar para salvar em uma pasta especifica
-          // Aqui comando para executar o .bat gerado anteriormente
-        }
-        else {
-          alert("emissão cancelada!")
-        }
-    }
-  </script>
-
-<h1 align="center">EMISSÃO</h1>
-<hr noshade></hr>
-<div class ="col-sm-2 text-left">
-</div>
-<div  class ="col-sm-8 text-left">
-  <!-- <form action="/gerar" method="POST"> -->
-  <form method="POST">
-    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-    <!-- senha para certificado.key -->
-    <!-- <input class="form-control" id="senha" name="senha" placeholder="digite a senha para certificado.key"></input>
-    <br>
-    <input class="form-control" id="conf_senha" name="conf_senha" placeholder="Confirme a senha digitada acima"></input>
-    <br> -->
-
-    <button onclick="teste(cpf.value)"  type="submit" class="btn btn-success">Finalizar certificado para ... </button>
-    <!-- <button onclick="teste()" type="submit" class="btn btn-success">Finalizar</button> -->
-    <br><br>
-      <label for="cpf"> CPF:</label>
-        <input class="form-control" readonly="readonly" id="cpf" name="cpf" value={{$cpf}}></input>
-  </form>
-</div>
-<div class ="col-sm-2 text-left">
-
-</div>
+  <div class="row">
+    <h1 align="center">EMISSÃO</h1>
+    <hr noshade></hr>
+    <div class="col-md-2">
+    </div>
+    <div  class ="col-md-8">
+      <!-- <form action="/gerar" method="POST"> -->
+      <form method="POST" action="/suc" class="form-inline">
+      <input type="hidden" name="_token" value="{{ csrf_token() }}">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-6 text-muted">
+                <!-- senha para certificado do solicitante -->
+                <label for="senhatitular"> Titular, digite sua senha:</label><br>
+                  <input size="25" maxlength=8 required="preenchimento Obrigadorio" class="form-control mx-sm-3" aria-describedby="heppass" type="password" id="senhatitular" name="sensenhatitularha" placeholder="Titular, crie uma senha"><br>
+                    <small id="heppass" class="text-muted">
+                    Deve ter de 4 a 8 numeros.
+                    </small>
+                <br>
+                <br>
+                <label for="conf_senha"> Titular, confirme sua senha:</label><br>
+                  <input size="25" maxlength=8 required="preenchimento Obrigadorio" class="form-control" type="password" id="conf_senha" name="conf_senha" placeholder="Titular, Confirme a senha">
+                <br><br>
+              </div>
+              <div class="col-md-6 text-muted">
+                <!-- senha para certificado da CA -->
+                <label for="senhaCa"> Senha da CA:</label><br>
+                  <input size="25" required="preenchimento Obrigadorio" class="form-control" type="password" id="senhaCa" name="senhaCa" placeholder="Agente, senha da CA"><br>
+                <br>
+                <button type="submit" class="btn btn-success "><b>Emitir Certificado para ...</b></button>
+                <br><br>
+                <label for="cpf"> CPF:</label><br>
+                <input size="25" class="form-control" readonly="readonly" id="cpf" name="cpf" value={{$cpf}}>
+              </div>
+            </div>      
+          </div>
+      </form>
+    </div>
+    <div class="col-md-2">
+    </div>
+  </div>
+  <hr noshade></hr>
 @stop

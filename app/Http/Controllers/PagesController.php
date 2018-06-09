@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 class PagesController extends Controller
 {
+
     public function index()
     {
         return view('home');
@@ -26,31 +27,41 @@ class PagesController extends Controller
 		return view('emissao');
     }
 
-    public function sucess()
+// shell_exec para emitir certificado
+    public function emit(Request $request)   // rota /suc
     {
-        return view('sucessoemissao');
+    //fopen cria arquivo .bat
+    $fp = fopen('C:\xampp\htdocs\docs\Estagio\caulbra\ca\cpf.bat', 'w');
+    
+    //fwrite escreve no arquivo .bat
+    fwrite($fp, 'cd C:\xampp\htdocs\docs\Estagio\caulbra\ca
+
+mkdir titular
+
+openssl genrsa -des3 -passout pass:1111 -out titular/priv.key 2048
+
+openssl req -new -config ca/openssl.conf -key titular/priv.key -out titular/req.csr -passin pass:1111 -subj "/C=BR/ST=TO/L=Palmas/O=Ulbra Company/CN=santhiago"
+
+openssl ca -extensions v3_ca -days 365 -in titular/req.csr -out titular/pub.cert -passin pass:1111 -config ca/openssl.conf -batch  
+
+openssl pkcs12 -export -out titular/parawindows.pfx -inkey titular/priv.key -in titular/pub.cert -certfile ca/caulbra.crt -passout pass:1111 -passin pass:1111
+
+winrar a emitidos/20180608.rar titular/*.*
+rmdir /s /q titular
+');
+    //fclose conclui o arquivo .bat
+    fclose($fp);
+
+    $execut= 'C:\xampp\htdocs\docs\Estagio\caulbra\ca\cpf.bat';
+       
+    //shell_exec para executar o arquivo .bat
+    shell_exec($execut);
+    $del='C:\xampp\htdocs\docs\Estagio\caulbra\ca\emitidos\del.bat
+    ';
+    shell_exec($del);
+
+    //rota após emissão
+    //return view('sucessoemissao');
+    return view('solicitacao');
     }
-
-    // public function gerar(Request $request)
-    // {
-    //     // shell_exec("openssl genrsa -out titular/private/net.key 1024");   
-    //     return view ("sucessoemissao");
-    // }
-
-    // public function move()  // upload dos arquivos
-    // {
-    //     $file = \Input::file('anexo'); // retorna o objeto em questão
-
-    //     var_dump($file);
-    //     var_dump(\Input::hasFile('anexo'));
-
-    //     $destinationPath = public_path().DIRECTORY_SEPARATOR.'files';
-    //     $fileName = '01.'.pathinfo('Hearthstone.desktop')['extension'];
-
-    //     //var_dump($file->move($destinationPath.DIRECTORY_SEPARATOR.'tmp'));
-    //     var_dump($file->move($destinationPath, $fileName));
-
-    //     return view('emissao');
-    // }
-
 }
