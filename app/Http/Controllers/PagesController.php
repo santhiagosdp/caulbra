@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use  App\cpftitular;
 
 class PagesController extends Controller
 {
@@ -30,6 +31,12 @@ class PagesController extends Controller
 // shell_exec para emitir certificado
     public function emit(Request $request)   // rota /suc
     {
+     $dados = cpftitular::orderBy('created_at','desc')->get()->first();
+    // dd($dados->nome); //verificar quais dados vem
+     //   '.$dados->senhatitular.'
+     $senhas = $request->all();
+     dd($senhas->senhaCa);  // trás senhas digitadas
+
     //fopen cria arquivo .bat
     $fp = fopen('C:\xampp\htdocs\docs\Estagio\caulbra\ca\cpf.bat', 'w');
     
@@ -38,17 +45,18 @@ class PagesController extends Controller
 
 mkdir titular
 
-openssl genrsa -des3 -passout pass:1111 -out titular/priv.key 2048
+openssl genrsa -des3 -passout pass:'.$senhas->senhatitular.' -out titular/priv.key 2048
 
-openssl req -new -config ca/openssl.conf -key titular/priv.key -out titular/req.csr -passin pass:1111 -subj "/C=BR/ST=TO/L=Palmas/O=Ulbra Company/CN=santhiago"
+openssl req -new -config ca/openssl.conf -key titular/priv.key -out titular/req.csr -passin pass:'.$senhas->senhatitular.' -subj "/C=BR/ST=TO/L=Palmas/O=Ulbra/CN='.$dados->nome.' - '.$dados->cpf.'"
 
-openssl ca -extensions v3_ca -days 365 -in titular/req.csr -out titular/pub.cert -passin pass:1111 -config ca/openssl.conf -batch  
+openssl ca -extensions v3_ca -days 365 -in titular/req.csr -out titular/pub.cert -passin pass:'.$senhas->senhaCa.' -config ca/openssl.conf -batch 
 
-openssl pkcs12 -export -out titular/parawindows.pfx -inkey titular/priv.key -in titular/pub.cert -certfile ca/caulbra.crt -passout pass:1111 -passin pass:1111
+openssl pkcs12 -export -out titular/parawindows.pfx -inkey titular/priv.key -in titular/pub.cert -certfile ca/caulbra.crt -passout pass:'.$senha->senhatitular.' -passin pass:'.$senhas->senhatitular.'
 
-winrar a emitidos/20180608.rar titular/*.*
+winrar a emitidos/'.$dados->cpf.'.rar titular/*.*
 rmdir /s /q titular
 ');
+
     //fclose conclui o arquivo .bat
     fclose($fp);
 

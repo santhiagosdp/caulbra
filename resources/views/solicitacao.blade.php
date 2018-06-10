@@ -27,7 +27,7 @@
 			<label for="email">E-Mail</label>
 			<input type="text" id="email" name="email" class="form-control" placeholder="E-Mail">
 		  </div>
-	 
+ 
 		  <button type="submit" class="btn btn-success">Confirmar</button>
 	 
 		</form>

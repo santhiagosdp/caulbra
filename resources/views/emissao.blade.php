@@ -19,7 +19,7 @@
               <div class="col-md-6 text-muted">
                 <!-- senha para certificado do solicitante -->
                 <label for="senhatitular"> Titular, digite sua senha:</label><br>
-                  <input size="25" maxlength=8 required="preenchimento Obrigadorio" class="form-control mx-sm-3" aria-describedby="heppass" type="password" id="senhatitular" name="sensenhatitularha" placeholder="Titular, crie uma senha"><br>
+                  <input size="25" maxlength=8 required="preenchimento Obrigadorio" class="form-control mx-sm-3" aria-describedby="heppass" type="password" id="senhatitular" name="senhatitular" placeholder="Titular, crie uma senha"><br>
                     <small id="heppass" class="text-muted">
                     Deve ter de 4 a 8 numeros.
                     </small>
