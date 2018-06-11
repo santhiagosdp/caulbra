@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCpftitularsTable extends Migration
+class CreateEmitidosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateCpftitularsTable extends Migration
      */
     public function up()
     {
-        Schema::create('cpftitulars', function (Blueprint $table) {
+        Schema::create('emitidos', function (Blueprint $table) {
             $table->increments('id');
             $table->string('cpf');
             $table->string('nome');
-            $table->string('email');
-            $table->string('fone');
+            $table->string('logCert');
+            $table->string('serial');
 
             $table->timestamps();
         });
@@ -31,6 +31,6 @@ class CreateCpftitularsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cpftitulars');
+        Schema::dropIfExists('emitidos');
     }
 }

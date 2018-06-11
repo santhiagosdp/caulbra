@@ -26,6 +26,7 @@ Route::post('/vld', function(Illuminate\Http\Request $request){
     $cpftitular->cpf = $request->get('cpf');
     $cpftitular->nome = $request->get('nome');
     $cpftitular->email = $request->get('email');
+    $cpftitular->fone = $request->get('fone');
  
     $cpftitular->save();
     
@@ -35,7 +36,7 @@ Route::post('/vld', function(Illuminate\Http\Request $request){
 
 Route::post('/ems', function(Illuminate\Http\Request $request ){
 
-	// codigo para anexar documentos 
+	// codigo para anexar documentos
 
 	 return view('emissao', ['cpf' => $request->get('cpf')]);
 });
@@ -46,3 +47,11 @@ Route::post('/suc', 'PagesController@emit' );
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+//Uploads de arquivos
+Route::post('/emitir','UploadFileController@showUploadFile');
+
+//Rotas para testes te envio do email
+Route::get('/sendbasicemail','MailController@basic_email');
+Route::get('/sendhtmlemail','MailController@html_email');
+Route::get('/sendattachmentemail','MailController@attachment_email');

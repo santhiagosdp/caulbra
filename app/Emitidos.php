@@ -4,10 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class cpftitular extends Model
+class Emitidos extends Model
 {
-    //
+	//
     protected $fillable = [
-        'nome', 'email', 'cpf','id','fone',
+        'nome', 'cpf','id','logCert','serial',
     ];
 }
+
