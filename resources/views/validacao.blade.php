@@ -20,7 +20,7 @@
    					<label for="arquivotitular">Anexar <b>RG, CPF e Termo de emissão assinado.</b>:</label>
    					<div class="input-group margin-bottom-sm">
    						<span class="input-group-addon"><i class="fa fa-upload fa-fw" aria-hidden="true"></i></span>
-   						<input required="" name="arquivotitular[]" class="form-control"type="file" placeholder="ANEXAR RG">
+   						<input required="" name="arquivotitular[]" class="form-control" type="file" placeholder="ANEXAR RG">
 
    						<input name="arquivotitular[]" class="form-control"type="file" placeholder="Anexar consulta de CPF">
 

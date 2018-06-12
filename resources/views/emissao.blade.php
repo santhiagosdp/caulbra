@@ -58,7 +58,7 @@ function validasenha(){
                 <label for="senhaCa"> Senha da CA:</label><br>
                   <input onkeypress='return SomenteNumero(event)' size="25" required="preenchimento Obrigadorio" class="form-control" type="password" id="senhaCa" name="senhaCa" placeholder="Agente, senha da CA"><br>
                 <br>
-                <button id="btemitir" type="submit" disabled="true" class="btn btn-success "><b>Emitir Certificado para ...</b></button>
+                <button id="btemitir" type="submit" disabled="true" class="btn btn-success "><b>Emitir Certificado</b></button>
                 <br><br>
 <!-- 
                 <label for="cpf"> CPF:</label><br>

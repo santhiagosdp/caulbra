@@ -14,7 +14,7 @@
 /* Route::get('/', function () {
     return view('welcome');
 }); */
-Route::get('/', 'PagesController@index'); //inicial welcome.blade
+Route::get('/', 'PagesController@index'); //inicial home ou welcome.blade
 
 Route::post('/slc', 'PagesController@solicitacao');
 

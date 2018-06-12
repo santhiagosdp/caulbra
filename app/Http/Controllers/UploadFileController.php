@@ -30,7 +30,7 @@ class UploadFileController extends Controller {
          $uploadfile = $uploaddir . basename($_FILES['arquivotitular']['name'][$key]);
 
          if (move_uploaded_file($_FILES['arquivotitular']['tmp_name'][$key], $uploadfile)) {
-            
+            // echo "arquivos sendo movidos";
          }
       }
       return view('emissao', ['cpf' => $request->get('cpf')]);

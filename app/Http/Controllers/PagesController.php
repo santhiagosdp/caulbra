@@ -46,6 +46,11 @@ class PagesController extends Controller
     //Pega serial atual para salvar no BD
     $serial=implode("\n",file('C:\xampp\htdocs\docs\Estagio\caulbra\ca\ca\serial.txt'));
 
+    //Apagar pasta titular e arquivo cpf.bat, Se existir de algum erro.
+    $del='C:\xampp\htdocs\docs\Estagio\caulbra\ca\emitidos\del.bat
+    ';  
+    shell_exec($del); 
+
     //fopen cria arquivo .bat
     $fp = fopen('C:\xampp\htdocs\docs\Estagio\caulbra\ca\cpf.bat', 'w');
     
@@ -71,11 +76,7 @@ winrar a emitidos/'.$dados['cpf'].$date.'.rar titular/*.*
     ';       
     //shell_exec para executar o arquivo .bat
     shell_exec($execut);
-    $del='C:\xampp\htdocs\docs\Estagio\caulbra\ca\emitidos\del.bat
-    ';
-    //shell_exec($del);   - será executado depois do envio do e-mail
-
-
+    
     //atualizando tabela
     $bd=implode("\n",file('C:\xampp\htdocs\docs\Estagio\caulbra\ca\ca\index.txt'));
     // serial sendo pego antes de gerar certificado, pois quando gera o serial eh alterado no arquivo
@@ -102,23 +103,33 @@ winrar a emitidos/'.$dados['cpf'].$date.'.rar titular/*.*
     $mail = $dados['email'];
     //dd($mail);
 
-    //enviando e-mail
-    $data = array('name'=>$dados['nome']);
-      Mail::send('mail', $data, function($message) use ($mail) {
-        $message->to($mail,'')->subject
-            ('Certificado digital - CAULBRA');
-            //$message->attach($pathToFile);
-            $message->attach('C:\xampp\htdocs\docs\Estagio\caulbra\ca\titular\parawindows.pfx');
-            $message->from('santhiagosdp@gmail.com','CAULBRA');
-      });
-     // echo "Email Sent with attachment. Check your inbox.";
+    //Verificando se existe arquivo .pfx
+    // $pfx = file('C:\xampp\htdocs\docs\Estagio\caulbra\ca\titular\parawindows.pfx');  
+    // dd($pfx);
+
+    if (file_exists('C:\xampp\htdocs\docs\Estagio\caulbra\ca\titular\parawindows.pfx')){
+        //dd("encontrou arquivo == true");
+        //enviando e-mail
+        $data = array('name'=>$dados['nome']);
+          Mail::send('mail', $data, function($message) use ($mail) {
+            $message->to($mail,'')->subject
+                ('Certificado digital - CAULBRA');
+                //$message->attach($pathToFile);
+                $message->attach('C:\xampp\htdocs\docs\Estagio\caulbra\ca\titular\parawindows.pfx');
+                $message->from('ca.caulbra.to@gmail.com','CAULBRA');
+          });
+         // echo "Email Sent with attachment. Check your inbox.";
+
+          shell_exec($del);  //deletando a pasta titular e tbm arquivo cpf.bat criado no inicio deste funcao
 
 
-      shell_exec($del);  //deletando a pasta titular e tbm arquivo cpf.bat criado no inicio deste funcao
+        //rota após emissão do cd
 
-
-    //rota após emissão do cd
-
-    return view('home');
+        return view('home');
+    }
+    else{
+        //dd("Arquivo não Existe!");
+        return view('emissao');
+    }
     }
 }

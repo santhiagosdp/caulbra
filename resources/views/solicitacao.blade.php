@@ -47,7 +47,7 @@ function SomenteNumero(e){
        	</div>
 
 		<div class="form-group">
-			<label for="fone">Telefone: ex. 99 9999-9999</label>
+			<label for="fone">Telefone: </label>
 			<input type="text" required="required" maxlength="15" name="fone" pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{4}$"  id="fone" name="fone" size="50" required="preenchimento Obrigadorio" class="form-control" placeholder="99 9999-9999"'>
 			<small id="smallemail" class="text-muted">
 	        	ex. 99 9999-9999
